@@ -31,19 +31,33 @@ const myLibrary = [
 	},
 ];
 
-function Book(title, author, pages, read) {
-	if (!new.target) {
-		throw Error("You must use the 'new' operator to call the constructor");
+class Book {
+	constructor(title, author, pages, read) {
+		this.id = crypto.randomUUID();
+		this.title = title;
+		this.author = author;
+		this.pages = pages;
+		this.read = read;
 	}
-	this.id = crypto.randomUUID();
-	this.title = title;
-	this.author = author;
-	this.pages = pages;
-	this.read = read;
-	this.info = function () {
+
+	info() {
 		return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}`;
-	};
+	}
 }
+
+// function Book(title, author, pages, read) {
+// 	if (!new.target) {
+// 		throw Error("You must use the 'new' operator to call the constructor");
+// 	}
+// 	this.id = crypto.randomUUID();
+// 	this.title = title;
+// 	this.author = author;
+// 	this.pages = pages;
+// 	this.read = read;
+// 	this.info = function () {
+// 		return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}`;
+// 	};
+// }
 
 function addBookToLibrary(newBook) {
 	return myLibrary.push(newBook);
