@@ -7,6 +7,19 @@ const pages = document.getElementById('pages');
 const read = document.getElementById('read');
 const addBookBtn = document.getElementById('addBookBtn');
 
+function myFunction() {
+	if (
+		!title.checkValidity() ||
+		!author.checkValidity() ||
+		!pages.checkValidity() ||
+		!read.checkValidity()
+	) {
+		document.getElementById('demo').innerHTML = title.validationMessage;
+	} else {
+		document.getElementById('demo').innerHTML = 'input OK';
+	}
+}
+
 const myLibrary = [
 	{
 		id: crypto.randomUUID(),
@@ -44,20 +57,6 @@ class Book {
 		return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}`;
 	}
 }
-
-// function Book(title, author, pages, read) {
-// 	if (!new.target) {
-// 		throw Error("You must use the 'new' operator to call the constructor");
-// 	}
-// 	this.id = crypto.randomUUID();
-// 	this.title = title;
-// 	this.author = author;
-// 	this.pages = pages;
-// 	this.read = read;
-// 	this.info = function () {
-// 		return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}`;
-// 	};
-// }
 
 function addBookToLibrary(newBook) {
 	return myLibrary.push(newBook);
